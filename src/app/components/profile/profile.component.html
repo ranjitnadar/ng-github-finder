@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row height d-flex justify-content-center align-items-center">
+    <div class="col-md-6">
+      <div class="form">
+        <i class="fa fa-search"></i>
+        <input
+          type="text"
+          class="form-control form-input"
+          placeholder="Search anything..."
+          ngModel
+          name="search"
+          required
+          #search
+          (keyup.enter)="getUsers(search.value)"
+        />
+        <span class="left-pan"><i class="fa fa-microphone"></i></span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3" *ngFor="let user of users">
+      <div class="card is-centered">
+        <figure>
+          <img class="mx-auto" [src]="user.avatar_url" alt="" />
+        </figure>
+        <div class="card-header-title is-centered">
+          {{ user.login | uppercase }}
+        </div>
+        div
+      </div>
+    </div>
+  </div>
+</div>
