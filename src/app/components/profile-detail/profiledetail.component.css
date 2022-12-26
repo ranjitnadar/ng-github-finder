@@ -1,0 +1,12 @@
+.no-underline {
+  text-decoration: none;
+}
+
+.btn-back:hover {
+  color: #000;
+}
+
+.btn-back,
+.card-header-title:hover {
+  color: #ddd;
+}

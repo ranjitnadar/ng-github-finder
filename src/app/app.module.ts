@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { HeaderComponent } from './components/header/header.component';
+import { ProfileDetailComponent } from './components/profile-detail/profiledetail.component';
 @NgModule({
   imports: [BrowserModule, FormsModule, HttpClientModule],
   declarations: [
@@ -13,6 +14,7 @@ import { HeaderComponent } from './components/header/header.component';
     HelloComponent,
     ProfileComponent,
     HeaderComponent,
+    ProfileDetailComponent,
   ],
   bootstrap: [AppComponent],
 })
