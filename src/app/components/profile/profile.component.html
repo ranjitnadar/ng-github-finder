@@ -1,32 +1,141 @@
 <div class="container">
-  <div class="row height d-flex justify-content-center align-items-center">
+  <div
+    class="row d-flex justify-content-center align-items-center"
+    [ngStyle]="searchContainerHeight"
+    *ngIf="!user"
+  >
     <div class="col-md-6">
       <div class="form">
-        <i class="fa fa-search"></i>
+        <i class="bi bi-search"></i>
         <input
-          type="text"
-          class="form-control form-input"
-          placeholder="Search anything..."
-          ngModel
+          class="form-control form-input border-end-0 border"
+          type="search"
+          value="search"
+          id="example-search-input"
+          placeholder="Search with github name..."
+          [(ngModel)]="searchText"
           name="search"
           required
           #search
           (keyup.enter)="getUsers(search.value)"
         />
-        <span class="left-pan"><i class="fa fa-microphone"></i></span>
+        <span class="left-pan"><i class="bi bi-mic"></i></span>
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-3" *ngFor="let user of users">
-      <div class="card is-centered">
-        <figure>
-          <img class="mx-auto" [src]="user.avatar_url" alt="" />
+  <div class="row" *ngIf="!user">
+    <div class="col-3 mb-4" *ngFor="let user of users">
+      <div class="card text-center box-shadow-1" (click)="getUserDetail(user)">
+        <figure class="m-0 p-0">
+          <img
+            class="img-fluid img-circle p-2 img-size"
+            [src]="user.avatar_url"
+            alt=""
+          />
         </figure>
-        <div class="card-header-title is-centered">
+        <div class="card-header-title text-center p-2 border-top">
           {{ user.login | uppercase }}
         </div>
-        div
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="user">
+    <div class="container">
+      <div class="row">
+        <div class="col-3 my-2 p-0">
+          <button
+            class="btn btn-sm btn-link no-underline btn-back"
+            (click)="getSearchList()"
+          >
+            Back to Search
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="card p-0 m-0">
+          <div class="card-body row">
+            <div class="col-6">
+              <img
+                [src]="user.avatar_url"
+                class="img-responsive img-circle"
+                [alt]="user.name"
+                style="width: 150px;"
+              />
+              <h1>{{ user.name }}</h1>
+              <p>Location: {{ user.location }}</p>
+            </div>
+            <div class="col-6">
+              <ul>
+                <li><strong>Username:</strong> {{ user.login }}</li>
+                <li><strong>Company:</strong> {{ user.company }}</li>
+                <li><strong>Followers:</strong> {{ user.followers }}</li>
+                <li><strong>Following:</strong> {{ user.following }}</li>
+                <li><strong>Public Repos:</strong> {{ user.public_repos }}</li>
+                <li><strong>Public Gists:</strong> {{ user.public_gists }}</li>
+                <li>
+                  <strong>Website:</strong>
+                  <a [href]="user.blog">{{ user.blog }}</a>
+                </li>
+                <li>
+                  <a
+                    [href]="user.html_url"
+                    target="_blank"
+                    class="btn btn-sm p-0 btn-link my-1"
+                    >Visit Github Profile</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="text-center">
+              <span class="badge rounded-pill bg-success mx-2"
+                ><strong>Followers:</strong> {{ user.followers }}</span
+              >
+              <span class="badge rounded-pill bg-danger mx-2"
+                ><strong>Following:</strong> {{ user.following }}</span
+              >
+              <span class="badge rounded-pill bg-primary mx-2"
+                ><strong>Public Repos:</strong> {{ user.public_repos }}</span
+              >
+              <span class="badge rounded-pill bg-warning mx-2"
+                ><strong>Public Gists:</strong> {{ user.public_gists }}</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="card p-0 my-1" *ngFor="let repo of userRepo">
+          <div class="card-body">
+            <h3>
+              <a [href]="repo.html_url" target="_blank">{{ repo.name }}</a>
+            </h3>
+            <div class="row">
+              <div class="col-6">
+                <div class="info">
+                  <strong>Fork Count: </strong>{{ repo.forks_count }}
+                </div>
+                <div class="info">
+                  <strong>Created At: </strong>{{ repo.created_at }}
+                </div>
+                <div class="info">
+                  <strong>Updated At: </strong>{{ repo.updated_at }}
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="info">
+                  <strong>Language: </strong
+                  >{{ repo.language ? repo.language : '' }}
+                </div>
+                <div class="info">
+                  <strong>Open Issue: </strong>{{ repo.open_issues_count }}
+                </div>
+                <div class="info">
+                  <strong>Visibility: </strong>{{ repo.visibility }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
