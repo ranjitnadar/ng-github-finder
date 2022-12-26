@@ -84,3 +84,21 @@
   -moz-background-clip: text;
   background-clip: text;
 }
+.font-size-2 {
+  font-size: 2em;
+}
+.history-icon {
+  color: #ddd;
+  cursor: pointer;
+}
+
+.history-item {
+  cursor: pointer;
+  font-size: 1em;
+}
+.icon-remove {
+  color: #ddd;
+}
+.icon-remove:hover {
+  color: #fff;
+}
