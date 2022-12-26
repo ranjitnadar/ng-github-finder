@@ -4,22 +4,23 @@
     [ngStyle]="searchContainerHeight"
     *ngIf="!user"
   >
-    <div class="col-md-6">
+    <div class="col-12">
+      <h1 class="text-center logo-title">Github Profile</h1>
+    </div>
+    <div class="col-6">
       <div class="form">
         <i class="bi bi-search"></i>
         <input
-          class="form-control form-input border-end-0 border"
+          class="form-control form-input border"
           type="search"
           value="search"
           id="example-search-input"
           placeholder="Search with github name..."
           [(ngModel)]="searchText"
           name="search"
-          required
           #search
           (keyup.enter)="getUsers(search.value)"
         />
-        <span class="left-pan"><i class="bi bi-mic"></i></span>
       </div>
     </div>
   </div>

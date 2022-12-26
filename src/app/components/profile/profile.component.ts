@@ -8,16 +8,13 @@ import { User } from '../../models/user';
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent {
-  users: any;
+  users: any = [];
   user: any = null;
   userRepo: any = null;
   searchText: String = null;
   displayUserDetailContainer: Boolean = false;
   displayGithubUserErrorNotFound: Boolean = false;
-  searchContainerHeight = {
-    // borderBottom: '3px solid lightgreen'
-    ['height']: '100vh',
-  };
+  searchContainerHeight: any = {};
   constructor(private userservice: RepositoryUserService) {}
 
   //accessing form inputs
@@ -25,10 +22,11 @@ export class ProfileComponent {
   searchForm!: NgForm;
 
   ngOnInit(): void {
+    this.setUserListHeight();
     // this.getUsers();
   }
   getUsers(search: any): void {
-    this.searchText = search;
+    console.log(this.searchText);
     this.user = null;
     if (search.length == 0) {
       this.users = [];
@@ -54,7 +52,7 @@ export class ProfileComponent {
     this.user = null;
   }
   setUserListHeight(): void {
-    let tempHeight = this.users.length == 0 ? '100vh' : '30vh';
+    let tempHeight = !this.users || this.users.length == 0 ? '60vh' : '30vh';
     console.log(tempHeight, this.users);
     this.searchContainerHeight = {
       // borderBottom: '3px solid lightgreen'

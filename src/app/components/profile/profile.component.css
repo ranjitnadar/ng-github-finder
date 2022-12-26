@@ -74,3 +74,13 @@
   box-shadow: none;
   border: 0;
 }
+
+.logo-title {
+  font: bold em arial, sans-serif;
+  background-color: rgba(175, 175, 175, 0.8);
+  color: transparent;
+  text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.5);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+}
