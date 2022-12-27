@@ -10,7 +10,7 @@ Simple Angular 2+ app that searches Github user profiles and repositories.
 
 ### Installation
 
-This app requires [Node.js](https://nodejs.org/) v4+ to run.
+This app requires [Node.js](https://nodejs.org/)
 
 ```sh
 $ npm install
@@ -18,7 +18,7 @@ $ npm install
 
 ### Usage
 
-This app requires [Node.js](https://nodejs.org/) v4+ to run.
+This app requires [Node.js](https://nodejs.org/)
 
 ```sh
 $ npm start
