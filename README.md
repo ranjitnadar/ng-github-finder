@@ -1,6 +1,6 @@
 # Github Search
 
-Simple Angular 2 app that searches Github user profiles and repositories.
+Simple Angular 2+ app that searches Github user profiles and repositories.
 
 ### Version
 1.1 - Uses Angular 15.0.2 
